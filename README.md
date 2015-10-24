@@ -12,7 +12,6 @@ During your webpack build it takes a react component, a props object, and an out
 
 ## Things You Should Know
 - It uses React 14 when rendering your component
-- The source is ES6, the lib is transpiled to ES5 (default entry point)
 - You can instantiate this plugin to render multiple pages, all too easy
 
 ## Enough Already, Show Me the Code
@@ -40,7 +39,7 @@ require('babel/register');
 
 var path = require('path');
 var webpack = require('webpack');
-var ReactRenderPlugin = require('react-render-plugin/src');
+var ReactRenderPlugin = require('react-render-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -155,7 +154,7 @@ index.html - this is what the generated html file looks like
 ## Antiisomorphism and Old School JavaScript
 You'll notice in the above example that the server rendering of the app was from the html.jsx file. This plugin doesn't care, all it does is take a react component, a props object, and an output path, and it renders the component with the props to the output. You can use this to render complex isomorphic components or to render simple html, it's up to you.
 
-The above example uses ES6, but you don't have to. The default transpiled library is returned from `require('react-render-component')`. You just need to make sure the component you are rendering is also ES5.
+The above example uses ES6, but you don't have to. You just need to make sure the component you are rendering is also ES5.
 
 ## License
 Free to use under the ISC license (see LICENSE.md).
