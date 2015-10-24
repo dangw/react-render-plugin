@@ -1,6 +1,6 @@
 {
   "name": "react-render-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A webpack plugin for build time rendering of react components",
   "main": "lib/",
   "scripts": {
@@ -19,8 +19,11 @@
     "LICENSE.md"
   ],
   "keywords": [
+    "webpack",
+    "plugin",
     "react",
-    "webpack"
+    "html",
+    "dangw"
   ],
   "author": "Dan Gwozdz <dev.dangw@gmail.com>",
   "license": "ISC",
