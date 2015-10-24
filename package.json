@@ -1,0 +1,37 @@
+{
+  "name": "react-render-plugin",
+  "version": "0.0.1",
+  "description": "A webpack plugin for build time rendering of react components",
+  "main": "lib/",
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "babel src --out-dir lib",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dangw/react-render-plugin.git"
+  },
+  "files": [
+    "src/",
+    "lib/",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "keywords": [
+    "react",
+    "webpack"
+  ],
+  "author": "Dan Gwozdz <dev.dangw@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dangw/react-render-plugin/issues"
+  },
+  "homepage": "https://github.com/dangw/react-render-plugin",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "rimraf": "^2.4.3"
+  }
+}
