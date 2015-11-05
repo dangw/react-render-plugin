@@ -14,13 +14,17 @@ During your webpack build it takes a react component, a props object, and an out
 - It uses React 14 when rendering your component
 - You can instantiate this plugin to render multiple pages, all too easy
 
+## What's New in the Latest Version
+- 0.0.4 adds the `hot` option which is a root source path to refresh when you're using a hot loader
+
 ## Enough Already, Show Me the Code
 ```javascript
 plugins: [
   new ReactRenderPlugin({
     component: path.join(__dirname, './src/html.jsx'),
     props: {dev: true, data: {title: "Hello World!"}},
-    output: path.join(__dirname, './public/index.html')
+    output: path.join(__dirname, './public/index.html'),
+    hot: path.join(__dirname, './src')
   })
 ]
 ```
@@ -29,6 +33,8 @@ plugins: [
 `props` is an object or a require path that exports an object
 
 `output` is the output file path
+
+`hot` is a optional root path for modules that should be refreshed when hot loading
 
 ## An Isomorphic Example
 Here's an example of building an isomorphic static html. The default data is passed to the plugin while the react component creates a data island and sets the default props.

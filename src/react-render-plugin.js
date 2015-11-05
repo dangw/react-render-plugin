@@ -10,7 +10,21 @@ class ReactRenderPlugin {
     this.options = options;
   }
 
-  afterEmit(compilation, callback) {
+  afterEmit(stats, callback) {
+
+    // clear the require cache for modules that match the hot path
+    if (typeof this.options.hot === "string") {
+      let hot = this.options.hot;
+      Object.keys(require.cache).forEach(function(key) {
+        if (key.search(hot) == 0) {
+          delete require.cache[key]
+        }
+      });
+    } else if (this.options.props) {
+      return callback("ERROR: ReactRenderPlugin hot is not a path");
+    }
+
+    // load the props as an object literal or a json module path
     let props = {};
     if (typeof this.options.props === "string") {
       props = require(this.options.props);
@@ -20,6 +34,7 @@ class ReactRenderPlugin {
       return callback("ERROR: ReactRenderPlugin props is not a path or function");
     }
 
+    // load the component as a react component or a react module
     let component = null;
     if (typeof this.options.component === "string") {
       component = require(this.options.component)
@@ -31,6 +46,7 @@ class ReactRenderPlugin {
       return callback("ERROR: ReactRenderPlugin component undefined");
     }
 
+    // validate the output path
     let output = "";
     if (typeof this.options.output === "string") {
       output = this.options.output;
@@ -40,8 +56,10 @@ class ReactRenderPlugin {
       return callback("ERROR: ReactRenderPlugin output undefined");
     }
 
+    // render the react component with the props
     const result = ReactDOMServer.renderToStaticMarkup(React.createElement(component, props));
 
+    // save the result
     fs.writeFile(output, result, function (err) {
       return callback(err);
     });
