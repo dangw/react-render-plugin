@@ -15,6 +15,7 @@ During your webpack build it takes a react component, a props object, and an out
 - You can instantiate this plugin to render multiple pages, all too easy
 
 ## What's New in the Latest Version
+- 0.0.5 fixed a bug that made `hot` not optional
 - 0.0.4 adds the `hot` option which is a root source path to refresh when you're using a hot loader
 
 ## Enough Already, Show Me the Code

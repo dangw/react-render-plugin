@@ -1,6 +1,6 @@
 {
   "name": "react-render-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A webpack plugin for build time rendering of react components",
   "main": "lib/",
   "scripts": {
