@@ -20,7 +20,7 @@ class ReactRenderPlugin {
           delete require.cache[key]
         }
       });
-    } else if (this.options.props) {
+    } else if (this.options.hot) {
       return callback("ERROR: ReactRenderPlugin hot is not a path");
     }
 
